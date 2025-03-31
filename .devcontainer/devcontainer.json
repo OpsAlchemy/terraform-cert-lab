@@ -20,15 +20,14 @@
 	"forwardPorts": [
 		8000
 	],
-	
 	"runArgs": [
 		"--privileged",
 		"--network=host",
-		"-v", "/var/run/docker.sock:/var/run/docker.sock"
+		"-v",
+		"/var/run/docker.sock:/var/run/docker.sock"
 	],
-	"remoteUser": "vscode",
-	"postCreateCommand": "sudo usermod -aG docker vscode && chmod +x /workspaces/terraform-cert-lab/.devcontainer/scripts/setup-aliases.sh && /workspaces/terraform-cert-lab/.devcontainer/scripts/setup-aliases.sh",
-
+	"remoteUser": "root",
+	"postCreateCommand": "chmod +x /workspaces/terraform-cert-lab/.devcontainer/scripts/main.sh && /workspaces/terraform-cert-lab/.devcontainer/scripts/main.sh",
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
@@ -39,7 +38,10 @@
 				"4ops.terraform"
 			]
 		}
-	}
+	},
+	"mounts": [
+		"source=/mnt/c/Users/VikashKumar/Desktop/dev/projects/jin40/jin-swarm/swarm,target=/root/elements/swarm,type=bind"
+	]
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }

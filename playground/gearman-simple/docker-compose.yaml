@@ -1,0 +1,30 @@
+services:
+  gearman:
+    image: artefactual/gearmand
+    container_name: gearmand
+    ports:
+      - 4732:4370
+    networks:
+      - gearman-net
+  
+  worker:
+    build: .
+    container_name: worker
+    command: php /app/worker.php
+    depends_on:
+      - gearman
+    networks:
+      - gearman-net
+  
+  client:
+    build: .
+    container_name: client
+    command: php /app/client.php
+    depends_on:
+      - gearman
+    networks:
+      - gearman-net
+
+networks:
+  gearman-net:
+    driver: bridge

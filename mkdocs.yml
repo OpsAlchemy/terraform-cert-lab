@@ -1,4 +1,4 @@
-site_name: Linux Labs
+site_name: Terraform Associate Certification Labs
 theme:
   name: readthedocs
   language: en
@@ -20,5 +20,3 @@ markdown_extensions:
   - footnotes
   - def_list
   - attr_list
-
-# pip install mkdocs-awesome-pages-plugin
