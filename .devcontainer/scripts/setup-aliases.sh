@@ -23,7 +23,6 @@ echo "alias tfs='terraform show'" >> /home/vscode/.bashrc
 echo "alias tfw='terraform workspace'" >> /home/vscode/.bashrc
 echo "alias tfo='terraform output'" >> /home/vscode/.bashrc
 
-# Source the bashrc to make aliases available
 source /home/vscode/.bashrc
 
 echo "Docker and Terraform aliases have been set up!"
