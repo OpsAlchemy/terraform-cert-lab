@@ -1,0 +1,45 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/debian
+{
+	"name": "Debian",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/base:bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/azure-cli:1": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers/features/terraform:1": {},
+		"ghcr.io/duduribeiro/devcontainer-features/neovim:1": {},
+		"ghcr.io/devcontainers-extra/features/mkdocs:2": {},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {}
+	},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {
+	// 
+	// },
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [
+		8000
+	],
+	
+	"runArgs": [
+		"--privileged",
+		"--network=host",
+		"-v", "/var/run/docker.sock:/var/run/docker.sock"
+	],
+	"remoteUser": "vscode",
+	"postCreateCommand": "sudo usermod -aG docker vscode && chmod +x /workspaces/terraform-cert-lab/.devcontainer/scripts/setup-aliases.sh && /workspaces/terraform-cert-lab/.devcontainer/scripts/setup-aliases.sh",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ahmadawais.shades-of-purple",
+				"mads-hartmann.bash-ide-vscode",
+				"ahmedhmy.bash-beautify",
+				"4ops.terraform"
+			]
+		}
+	}
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

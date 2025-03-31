@@ -1,0 +1,5 @@
+INFO    -  Building documentation...
+INFO    -  Cleaning site directory
+INFO    -  Documentation built in 0.18 seconds
+INFO    -  [04:19:12] Watching paths for changes: 'docs', 'mkdocs.yml'
+INFO    -  [04:19:12] Serving on http://127.0.0.1:8000/
