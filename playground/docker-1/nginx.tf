@@ -1,23 +1,30 @@
-resource "docker_image" "alpine" {
-  name = "alpine:latest"
+resource "docker_image" "nginx" {
+  name = "nginx:latest"
 }
 
-resource "docker_container" "alpine_container" {
-  name  = "funny-container"
-  image = docker_image.alpine.image_id
+resource "docker_container" "nginx_container" {
+  name  = "nginx-server"
+  image = docker_image.nginx.image_id
 
-  command = ["sh", "-c", "apk add fortune && fortune && sleep infinity"]
+  ports {
+    internal = 80
+    external = 8080
+  }
 
   must_run = true
 }
 
-
 output "container_id" {
-  description = "The ID of the created container"
-  value       = docker_container.alpine_container.id
+  description = "The ID of the created NGINX container"
+  value       = docker_container.nginx_container.id
 }
 
 output "container_logs" {
-  description = "Logs from the container"
-  value       = docker_container.alpine_container.logs
+  description = "Logs from the NGINX container"
+  value       = docker_container.nginx_container.logs
+}
+
+output "nginx_url" {
+  description = "Access the NGINX server at this URL"
+  value       = "http://localhost:8080"
 }
